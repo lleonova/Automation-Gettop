@@ -1,3 +1,5 @@
+from time import sleep
+
 from selenium.webdriver.common.by import By
 from pages.base_page import Page
 # from pages.top_menu_bar import TopMenu
@@ -31,8 +33,9 @@ class QuickView(Page):
             button = self.find_elements(*self.QUICK_VIEW_BUTTONS)[product]
             # click QV button to open QV window
             self.actions.move_to_element(button).click().perform()
-
+            #sleep(1)
             # click X button to close QV window
+            self.wait_for_element(self.X_BUTTON)
             self.click(*self.X_BUTTON)
             self.wait_for_element_disappear(self.QUICK_VIEW_CONTAINER)
 
